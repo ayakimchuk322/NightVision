@@ -1,0 +1,15 @@
+{
+  "title": "Night Vision",
+  "name": "nightvision",
+  "version": "0.0.1",
+  "description": "Easy and comfortable pages viewing at night time.",
+  "main": "index.js",
+  "author": "Tol182",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
