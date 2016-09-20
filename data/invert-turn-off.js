@@ -9,4 +9,3 @@ function consoleOut() {
 }
 
 turnOff();
-consoleOut();

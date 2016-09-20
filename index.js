@@ -1,34 +1,44 @@
-var self = require("sdk/self");
+// TODO add different night modes
+// TODO documentation comments
+
 var buttons = require('sdk/ui/button/action');
+var panels = require("sdk/panel");
+var self = require("sdk/self");
 var tabs = require("sdk/tabs");
+var toggle = require('sdk/ui/button/toggle');
 
-var isEnabled = false;
-
-var button = buttons.ActionButton({
-    id: "nightvision-main-button",
-    label: "Toggle Night Vision",
-    // TODO create and add generic icons
+var button = toggle.ToggleButton({
+    id: "nightvision-menu-button",
+    label: "Open NightVision menu",
     icon: {
-        "16": "./icon-16.png",
-        "32": "./icon-32.png",
-        "64": "./icon-64.png"
+        "16": "./icon16.png",
+        "32": "./icon32.png",
+        "64": "./icon64.png"
     },
-    onClick: toggleNightVision
+    onChange: handleChange
 });
 
-function toggleNightVision() {
-    // TODO add icon change depending on NV state (on/off)
-    if (isEnabled) {
-        require("sdk/tabs").activeTab.attach({
-            contentScriptFile: self.data.url("turn-off.js")
-        });
+var panel = panels.Panel({
+    contentURL: self.data.url("panel.html"),
+    contentScriptFile: self.data.url("panel-buttons.js"),
+    onHide: handleHide
+});
 
-        isEnabled = false;
-    } else {
-        require("sdk/tabs").activeTab.attach({
-            contentScriptFile: self.data.url("turn-on.js")
+function handleChange(state) {
+    if (state.checked) {
+        panel.show({
+            position: button
         });
-
-        isEnabled = true;
     }
 }
+
+function handleHide() {
+    button.state('window', {checked: false});
+}
+
+
+panel.port.on("invertM", function (panelmethod) {
+    tabs.activeTab.attach({
+        contentScriptFile: self.data.url(panelmethod)
+    });
+});
