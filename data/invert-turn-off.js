@@ -5,7 +5,7 @@ function turnOff() {
 }
 
 function consoleOut() {
-    console.log("OFF");
+    console.log("[NightVision - invert mode OFF]");
 }
 
 turnOff();

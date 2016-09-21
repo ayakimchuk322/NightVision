@@ -11,7 +11,7 @@ function turnOn() {
 }
 
 function consoleOut() {
-    console.log("ON");
+    console.log("[NightVision - smart invert mode ON]");
 }
 
 turnOn();
