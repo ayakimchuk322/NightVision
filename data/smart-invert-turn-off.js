@@ -15,4 +15,3 @@ function consoleOut() {
 }
 
 turnOff();
-consoleOut();
