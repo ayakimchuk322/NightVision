@@ -35,6 +35,10 @@ function handleChange(state) {
         panel.show({
             position: button
         });
+
+        /*Enable tooltips (title attribute) inside panel*/
+        require('sdk/view/core').getActiveView(panel)
+            .setAttribute('tooltip', 'aHTMLTooltip');
     }
 }
 

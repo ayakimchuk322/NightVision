@@ -9,12 +9,17 @@
             background-color: white;
         }
         
+        div {
+            margin-bottom: 8px;
+        }
+        
         span {
             vertical-align: middle;
             font-size: 16pt;
             font-weight: bold;
             color: black;
             margin-left: 5px;
+            -moz-user-select: none;
         }
         
         .methodButton {
@@ -25,13 +30,15 @@
     </style>
 <body>
 
-<p>
-    <img id="invert" class="methodButton" src="invert.png"><span>Invert</span>
-</p>
+<div id="invert" title="Toggle ON/OF Invert method">
+    <img class="methodButton" src="invert.png">
+    <span>Invert</span>
+</div>
 
-<p>
-    <img id="smartInvert" class="methodButton" src="smart-invert.png"><span>Smart invert</span>
-</p>
+<div id="smartInvert" title="Toggle ON/OF Smart invert method">
+    <img class="methodButton" src="smart-invert.png">
+    <span>Smart invert</span>
+</div>
 
 </body>
 </html>
