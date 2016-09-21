@@ -7,6 +7,8 @@ var self = require("sdk/self");
 var tabs = require("sdk/tabs");
 var toggle = require('sdk/ui/button/toggle');
 
+var currentMethod = "off";
+
 /*Add-on menu button*/
 var button = toggle.ToggleButton({
     id: "nightvision-menu-button",
@@ -27,6 +29,7 @@ var panel = panels.Panel({
 });
 
 /*Panel width in px*/
+// TODO add height
 panel.width = 200;
 
 /*Panel show*/
@@ -49,7 +52,24 @@ function handleHide() {
 
 /*Get user click from panel*/
 panel.port.on("invertM", function (panelmethod) {
-    tabs.activeTab.attach({
-        contentScriptFile: self.data.url(panelmethod)
-    });
+    /*Apply method script to all opened tabs*/
+    currentMethod = panelmethod;
+
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].attach({
+            contentScriptFile: self.data.url(panelmethod)
+        });
+    }
 });
+
+tabs.on('open', applyToNewTab);
+tabs.on("activate", applyToNewTab);
+tabs.on("pageshow", applyToNewTab);
+
+function applyToNewTab() {
+    if (currentMethod != "off") {
+        tabs.activeTab.attach({
+            contentScriptFile: self.data.url(currentMethod)
+        });
+    }
+}
