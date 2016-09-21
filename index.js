@@ -1,5 +1,7 @@
 // TODO add different night modes
 // TODO documentation comments
+// TODO add style to panel
+// TODO add icons to panel
 
 var buttons = require('sdk/ui/button/action');
 var panels = require("sdk/panel");
@@ -23,6 +25,8 @@ var panel = panels.Panel({
     contentScriptFile: self.data.url("panel-buttons.js"),
     onHide: handleHide
 });
+
+panel.width = 200;
 
 function handleChange(state) {
     if (state.checked) {
