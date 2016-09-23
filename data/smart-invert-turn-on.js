@@ -9,6 +9,12 @@ function turnOn() {
         imgs[i].style.filter = "invert(100%)";
     }
 
+    var videos = document.getElementsByTagName("video");
+
+    for (var i = 0; i < videos.length; i++) {
+        videos[i].style.filter = "invert(100%)";
+    }
+
     consoleOut();
 }
 
