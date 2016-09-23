@@ -1,7 +1,7 @@
 function turnOn() {
     document.documentElement.style.filter = "invert(100%)";
 
-    document.body.style.backgroundColor = "black";
+    document.documentElement.style.backgroundColor = "black";
 
     consoleOut();
 }
