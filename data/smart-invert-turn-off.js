@@ -1,7 +1,9 @@
 function turnOff() {
-    document.body.style.filter = "invert(0%)";
+    document.documentElement.style.filter = "invert(0%)";
 
-    var imgs = document.images;
+    document.body.style.backgroundColor = "white";
+
+    var imgs = document.getElementsByTagName("img");
 
     for (var i = 0; i < imgs.length; i++) {
         imgs[i].style.filter = "invert(0%)";

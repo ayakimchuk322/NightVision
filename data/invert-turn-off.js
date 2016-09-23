@@ -1,5 +1,5 @@
 function turnOff() {
-    document.body.style.filter = "invert(0%)";
+    document.documentElement.style.filter = "invert(0%)";
 
     document.body.style.backgroundColor = "white";
 

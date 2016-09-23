@@ -1,10 +1,12 @@
 function turnOn() {
-    document.body.style.filter = "invert(100%)";
+    document.documentElement.style.filter = "invert(100%)";
 
-    var imgs = document.images;
+    document.body.style.backgroundColor = "black";
+
+    var imgs = document.getElementsByTagName("img");
 
     for (var i = 0; i < imgs.length; i++) {
-        imgs[i].style.filter = "invert(100%) !important";
+        imgs[i].style.filter = "invert(100%)";
     }
 
     consoleOut();
