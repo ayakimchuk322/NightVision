@@ -1,30 +1,30 @@
 /*Global flag for all modes*/
-var currentMethod = "off";
+var currentMode = "off";
 
 /*Listeners for img - 'buttons'*/
 document.getElementById("invert").addEventListener("click", invert);
 document.getElementById("smartInvert").addEventListener("click", smartInvert);
 
 function invert() {
-    if (currentMethod != "invert") {
+    if (currentMode != "invert") {
         self.port.emit("invertM", "invert-turn-on.js");
 
-        currentMethod = "invert";
+        currentMode = "invert";
     } else {
         self.port.emit("invertM", "invert-turn-off.js");
 
-        currentMethod = "off";
+        currentMode = "off";
     }
 }
 
 function smartInvert() {
-    if (currentMethod != "smartinvert") {
+    if (currentMode != "smartinvert") {
         self.port.emit("invertM", "smart-invert-turn-on.js");
 
-        currentMethod = "smartinvert";
+        currentMode = "smartinvert";
     } else {
         self.port.emit("invertM", "smart-invert-turn-off.js");
 
-        currentMethod = "off";
+        currentMode = "off";
     }
 }
