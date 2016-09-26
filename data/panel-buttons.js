@@ -3,6 +3,7 @@ var currentMode = "off";
 
 /*Listeners for img - 'buttons'*/
 document.getElementById("invert").addEventListener("click", invert);
+document.getElementById("matrix").addEventListener("click", matrix);
 document.getElementById("smartInvert").addEventListener("click", smartInvert);
 
 function invert() {
@@ -12,6 +13,18 @@ function invert() {
         currentMode = "invert";
     } else {
         self.port.emit("invertM", "invert-turn-off.js");
+
+        currentMode = "off";
+    }
+}
+
+function matrix() {
+    if (currentMode != "matrix") {
+        self.port.emit("invertM", "matrix-turn-on.js");
+
+        currentMode = "matrix";
+    } else {
+        self.port.emit("invertM", "matrix-turn-off.js");
 
         currentMode = "off";
     }
