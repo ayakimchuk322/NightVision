@@ -1,4 +1,5 @@
 function turnOn() {
+
     document.documentElement.style.filter = "invert(100%)";
 
     var invertStyle = document.createElement("style");
@@ -9,7 +10,8 @@ function turnOn() {
 
     var invertSheet = invertStyle.sheet;
 
-    invertSheet.insertRule("body {background-color: black}", 0);
+    invertSheet.insertRule("* {background-color: white !important}", 0);
+    invertSheet.insertRule("body {background-color: white !important}", 0);
 
     consoleOut();
 }

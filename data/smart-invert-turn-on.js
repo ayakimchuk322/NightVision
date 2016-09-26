@@ -1,4 +1,5 @@
 function turnOn() {
+
     document.documentElement.style.filter = "invert(100%)";
 
     var smartInvertStyle = document.createElement("style");
@@ -9,7 +10,8 @@ function turnOn() {
 
     var smartInvertSheet = smartInvertStyle.sheet;
 
-    smartInvertSheet.insertRule("body {background-color: black}", 0);
+    smartInvertSheet.insertRule("* {background-color: white !important}", 0);
+    smartInvertSheet.insertRule("body {background-color: white !important}", 0);
 
     var imgs = document.getElementsByTagName("img");
 
