@@ -1,7 +1,15 @@
 function turnOn() {
     document.documentElement.style.filter = "invert(100%)";
 
-    document.documentElement.style.backgroundColor = "black";
+    var invertStyle = document.createElement("style");
+    var invertStyleId = document.createAttribute("id");
+    invertStyleId.value = "invertstyleid";
+    invertStyle.setAttributeNode(invertStyleId);
+    document.head.appendChild(invertStyle);
+
+    var invertSheet = invertStyle.sheet;
+
+    invertSheet.insertRule("body {background-color: black}", 0);
 
     consoleOut();
 }

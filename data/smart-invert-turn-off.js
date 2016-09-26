@@ -1,7 +1,8 @@
 function turnOff() {
     document.documentElement.style.filter = "invert(0%)";
 
-    document.documentElement.style.backgroundColor = "white";
+    var smartInvertStyle = document.getElementById("smartinvertstyleid");
+    smartInvertStyle.parentNode.removeChild(smartInvertStyle);
 
     var imgs = document.getElementsByTagName("img");
 

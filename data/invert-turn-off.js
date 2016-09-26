@@ -1,7 +1,8 @@
 function turnOff() {
     document.documentElement.style.filter = "invert(0%)";
 
-    document.documentElement.style.backgroundColor = "white";
+    var invertStyle = document.getElementById("invertstyleid");
+    invertStyle.parentNode.removeChild(invertStyle);
 
     consoleOut();
 }
