@@ -50,8 +50,6 @@ function handleHide() {
     button.state('window', {checked: false});
 }
 
-// FIXME apply night modes instantly, not after the page loaded
-
 /*Get user click from panel*/
 panel.port.on("invertM", function (mode) {
     /*Apply method script to all opened tabs*/
@@ -93,9 +91,7 @@ panel.port.on("invertM", function (mode) {
 });
 
 /*Apply method script to newly opened tab*/
-tabs.on('open', applyToNewTab);
-tabs.on("activate", applyToNewTab);
-tabs.on("pageshow", applyToNewTab);
+tabs.on("ready", applyToNewTab);
 
 function applyToNewTab() {
     if (newMode != "off") {
