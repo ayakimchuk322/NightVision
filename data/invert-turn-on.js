@@ -17,7 +17,7 @@ function turnOn() {
     // Create stylesheet
     var invertStyle = document.createElement("style");
     var invertStyleId = document.createAttribute("id");
-    invertStyleId.value = "invertstyleid987";
+    invertStyleId.value = "i987";
     invertStyle.setAttributeNode(invertStyleId);
     document.head.appendChild(invertStyle);
 

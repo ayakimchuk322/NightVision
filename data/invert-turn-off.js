@@ -4,7 +4,7 @@ function turnOff() {
     document.documentElement.style.filter = "invert(0%)";
 
     // Remove stylesheet with invert mode styles
-    var matrixStyle = document.getElementById("invertstyleid987");
+    var matrixStyle = document.getElementById("i987");
     matrixStyle.parentNode.removeChild(matrixStyle);
 
     // Remove added custom class
@@ -12,18 +12,6 @@ function turnOff() {
 
     for (var i = 0; i < allElements.length; i++) {
         allElements[i].classList.remove("TransToWhite987");
-    }
-
-    // Reload all the css without reloading page itself
-    // to restore removed rules
-    var links = document.getElementsByTagName("link");
-    for (var i = 0; i < links.length; i++) {
-
-        var link = links[i];
-
-        if (link.rel === "stylesheet") {
-            link.href += "?";
-        }
     }
 
     consoleOut();
