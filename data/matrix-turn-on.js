@@ -1,17 +1,5 @@
 function turnOn() {
 
-    var allElements = document.getElementsByTagName("*");
-
-    for (var i = 0; i < allElements.length; i++) {
-        allElements[i].style.removeProperty("backgroundColor");
-        allElements[i].style.removeProperty("color");
-        allElements[i].style.removeProperty("border-color");
-        allElements[i].style.removeProperty("border-top-color");
-        allElements[i].style.removeProperty("border-right-color");
-        allElements[i].style.removeProperty("border-bottom-color");
-        allElements[i].style.removeProperty("border-left-color");
-    }
-
     var matrixStyle = document.createElement("style");
     var matrixStyleId = document.createAttribute("id");
     matrixStyleId.value = "matrixstyleid";
