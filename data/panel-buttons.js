@@ -2,9 +2,22 @@
 var currentMode = "off";
 
 /*Listeners for img - 'buttons'*/
+document.getElementById("high").addEventListener("click", high);
 document.getElementById("invert").addEventListener("click", invert);
 document.getElementById("matrix").addEventListener("click", matrix);
-document.getElementById("smartInvert").addEventListener("click", smartInvert);
+document.getElementById("smartinvert").addEventListener("click", smartInvert);
+
+function high() {
+    if (currentMode != "high") {
+        self.port.emit("invertM", "high-turn-on.js");
+
+        currentMode = "high";
+    } else {
+        self.port.emit("invertM", "high-turn-off.js");
+
+        currentMode = "off";
+    }
+}
 
 function invert() {
     if (currentMode != "invert") {
