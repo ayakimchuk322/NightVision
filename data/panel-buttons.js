@@ -2,23 +2,12 @@
 var currentMode = "off";
 
 /*Listeners for img - 'buttons'*/
-document.getElementById("high").addEventListener("click", high);
 document.getElementById("invert").addEventListener("click", invert);
-document.getElementById("matrix").addEventListener("click", matrix);
-document.getElementById("red").addEventListener("click", red);
 document.getElementById("smart").addEventListener("click", smart);
+document.getElementById("green").addEventListener("click", green);
+document.getElementById("aqua").addEventListener("click", aqua);
+document.getElementById("red").addEventListener("click", red);
 
-function high() {
-    if (currentMode != "high") {
-        self.port.emit("invertM", "high-turn-on.js");
-
-        currentMode = "high";
-    } else {
-        self.port.emit("invertM", "high-turn-off.js");
-
-        currentMode = "off";
-    }
-}
 
 function invert() {
     if (currentMode != "invert") {
@@ -32,13 +21,37 @@ function invert() {
     }
 }
 
-function matrix() {
-    if (currentMode != "matrix") {
-        self.port.emit("invertM", "matrix-turn-on.js");
+function smart() {
+    if (currentMode != "smartinvert") {
+        self.port.emit("invertM", "smart-invert-turn-on.js");
 
-        currentMode = "matrix";
+        currentMode = "smartinvert";
     } else {
-        self.port.emit("invertM", "matrix-turn-off.js");
+        self.port.emit("invertM", "smart-invert-turn-off.js");
+
+        currentMode = "off";
+    }
+}
+
+function green() {
+    if (currentMode != "green") {
+        self.port.emit("invertM", "green-turn-on.js");
+
+        currentMode = "green";
+    } else {
+        self.port.emit("invertM", "green-turn-off.js");
+
+        currentMode = "off";
+    }
+}
+
+function aqua() {
+    if (currentMode != "aqua") {
+        self.port.emit("invertM", "aqua-turn-on.js");
+
+        currentMode = "aqua";
+    } else {
+        self.port.emit("invertM", "aqua-turn-off.js");
 
         currentMode = "off";
     }
@@ -51,18 +64,6 @@ function red() {
         currentMode = "red";
     } else {
         self.port.emit("invertM", "red-turn-off.js");
-
-        currentMode = "off";
-    }
-}
-
-function smart() {
-    if (currentMode != "smartinvert") {
-        self.port.emit("invertM", "smart-invert-turn-on.js");
-
-        currentMode = "smartinvert";
-    } else {
-        self.port.emit("invertM", "smart-invert-turn-off.js");
 
         currentMode = "off";
     }
