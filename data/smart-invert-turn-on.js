@@ -1,7 +1,7 @@
 function turnOn() {
 
     // Apply invert filter
-    document.documentElement.style.filter = "invert(100%)";
+    document.documentElement.style.filter = "invert(100%) brightness(75%)";
 
     // Mark elements with custom class - those with transparent bg
     var allElements = document.getElementsByTagName("*");

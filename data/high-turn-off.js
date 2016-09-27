@@ -1,5 +1,8 @@
 function turnOff() {
 
+    // Disable brightness filter
+    document.documentElement.style.filter = "brightness(100%)";
+
     // Remove stylesheet with high contrast mode styles
     var highStyle = document.getElementById("highstyleid");
     highStyle.parentNode.removeChild(highStyle);

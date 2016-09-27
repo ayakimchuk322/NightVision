@@ -1,7 +1,7 @@
 function turnOff() {
 
     // Disable invert filter
-    document.documentElement.style.filter = "invert(0%)";
+    document.documentElement.style.filter = "brightness(100%) invert(0%)";
 
     // Remove stylesheet with smart invert mode styles
     var matrixStyle = document.getElementById("si987");

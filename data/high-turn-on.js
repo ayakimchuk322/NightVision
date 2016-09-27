@@ -1,5 +1,8 @@
 function turnOn() {
 
+    // Apply brightness filter
+    document.documentElement.style.filter = "brightness(75%)";
+
     // Mark elements with custom class - those with non-transparent bg
     var allElements = document.getElementsByTagName("*");
 

@@ -1,5 +1,8 @@
 function turnOff() {
 
+    // Disable brightness filter
+    document.documentElement.style.filter = "brightness(100%)";
+
     // Remove stylesheet with matrix mode styles
     var matrixStyle = document.getElementById("matrixstyleid");
     matrixStyle.parentNode.removeChild(matrixStyle);
