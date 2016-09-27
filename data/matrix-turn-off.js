@@ -4,6 +4,13 @@ function turnOff() {
     var matrixStyle = document.getElementById("matrixstyleid");
     matrixStyle.parentNode.removeChild(matrixStyle);
 
+    // Remove added custom class
+    var allElements = document.getElementsByTagName("*");
+
+    for (var i = 0; i < allElements.length; i++) {
+        allElements[i].classList.remove("ToBlack987");
+    }
+
     consoleOut();
 }
 
