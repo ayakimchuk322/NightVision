@@ -92,6 +92,7 @@ panel.port.on("invertM", function (mode) {
 
 /*Apply method script to newly opened tab*/
 tabs.on("ready", applyToNewTab);
+tabs.on("activate", applyToNewTab);
 
 function applyToNewTab() {
     if (newMode != "off") {
