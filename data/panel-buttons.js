@@ -5,7 +5,8 @@ var currentMode = "off";
 document.getElementById("high").addEventListener("click", high);
 document.getElementById("invert").addEventListener("click", invert);
 document.getElementById("matrix").addEventListener("click", matrix);
-document.getElementById("smartinvert").addEventListener("click", smartInvert);
+document.getElementById("red").addEventListener("click", red);
+document.getElementById("smart").addEventListener("click", smart);
 
 function high() {
     if (currentMode != "high") {
@@ -43,7 +44,19 @@ function matrix() {
     }
 }
 
-function smartInvert() {
+function red() {
+    if (currentMode != "red") {
+        self.port.emit("invertM", "red-turn-on.js");
+
+        currentMode = "red";
+    } else {
+        self.port.emit("invertM", "red-turn-off.js");
+
+        currentMode = "off";
+    }
+}
+
+function smart() {
     if (currentMode != "smartinvert") {
         self.port.emit("invertM", "smart-invert-turn-on.js");
 
