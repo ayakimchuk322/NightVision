@@ -23,8 +23,9 @@ function turnOn() {
 
     var invertSheet = invertStyle.sheet;
 
-    // Add rule for custom class - replace transparent bg with white
+    // Add rules for custom class
     invertSheet.insertRule(".TransToWhite987 {background-color: white !important}", 0);
+    invertSheet.insertRule(".TransToWhite987 {color: black !important}", 0);
 
     consoleOut();
 }

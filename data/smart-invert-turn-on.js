@@ -23,8 +23,9 @@ function turnOn() {
 
     var smartInvertSheet = smartInvertStyle.sheet;
 
-    // Add rule for custom class - replace transparent bg with white
+    // Add rules for custom class
     smartInvertSheet.insertRule(".TransToWhite987 {background-color: white !important}", 0);
+    smartInvertSheet.insertRule(".TransToWhite987 {color: black !important}", 0);
 
     // Disable invert filter for images
     var imgs = document.getElementsByTagName("img");
