@@ -22,7 +22,19 @@
             font-size: 12pt;
             font-weight: normal;
             color: #e6e6e6;
-            margin-left: 5px;
+            margin-left: 10px;
+            -moz-user-select: none;
+        }
+        
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            font-size: 12pt;
+            color: #e6e6e6;
+            font-weight: bold;
             -moz-user-select: none;
         }
         
@@ -30,11 +42,18 @@
             vertical-align: middle;
             height: 16px;
             width: 16px;
+            margin-left: 5px;
         }
     </style>
 <body>
 
 <div>
+    <div class="title">
+        NightVision
+    </div>
+    
+    <hr>
+    
     <div id="invert" title="Toggle ON/OF Invert mode">
         <img class="methodButton" src="invert.png">
         <span>Invert</span>

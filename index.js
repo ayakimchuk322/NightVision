@@ -29,8 +29,8 @@ var panel = panels.Panel({
 });
 
 /*Panel size in px*/
-panel.width = 182;
-panel.height = 195;
+panel.width = 196;
+panel.height = 238;
 
 /*Panel show*/
 function handleChange(state) {
