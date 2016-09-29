@@ -14,12 +14,29 @@ var button = toggle.ToggleButton({
     id: "nightvision-menu-button",
     label: "Open NightVision menu",
     icon: {
-        "16": "./icon16.png",
-        "32": "./icon32.png",
-        "64": "./icon64.png"
+        "16": "./icon-off-16.png",
+        "32": "./icon-off-32.png",
+        "64": "./icon-off-64.png"
     },
     onChange: handleChange
 });
+
+/*Update add-on button icon on on/off*/
+function updateButtonIcon() {
+    if (isEnabled) {
+        button.icon = {
+            "16": "./icon-on-16.png",
+            "32": "./icon-on-32.png",
+            "64": "./icon-on-64.png"
+        }
+    } else {
+        button.icon = {
+            "16": "./icon-off-16.png",
+            "32": "./icon-off-32.png",
+            "64": "./icon-off-64.png"
+        }
+    }
+}
 
 /*Add-on panel*/
 var panel = panels.Panel({
@@ -88,6 +105,8 @@ panel.port.on("invertM", function (mode) {
             isEnabled = false;
         }
     }
+
+    updateButtonIcon();
 });
 
 /*Apply method script to newly opened tab*/
