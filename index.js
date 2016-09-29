@@ -28,9 +28,9 @@ var panel = panels.Panel({
     onHide: handleHide
 });
 
-/*Panel width in px*/
-// TODO add height
-panel.width = 200;
+/*Panel size in px*/
+panel.width = 182;
+panel.height = 195;
 
 /*Panel show*/
 function handleChange(state) {
