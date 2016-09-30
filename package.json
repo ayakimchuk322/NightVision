@@ -1,7 +1,7 @@
 {
   "title": "NightVision",
   "name": "nightvision",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy and comfortable pages viewing at night time. Choose one of the five cool night modes and enjoy web pages in new colors!",
   "main": "index.js",
   "author": "Tol182",
