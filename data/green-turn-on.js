@@ -32,11 +32,11 @@ function turnOn() {
     matrixSheet.insertRule("* {outline: aqua; !important}", 0);
     matrixSheet.insertRule("* {box-shadow: aqua; !important}", 0);
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {
-    console.log("[NightVision - matrix mode ON]");
+    console.log("[NightVision - high contrast #1 mode ON]");
 }
 
 turnOn();

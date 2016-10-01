@@ -27,7 +27,7 @@ function turnOn() {
     invertSheet.insertRule(".TransToWhite987 {background-color: white !important}", 0);
     invertSheet.insertRule(".TransToWhite987 {color: black !important}", 0);
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {

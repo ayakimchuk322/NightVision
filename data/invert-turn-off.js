@@ -14,7 +14,7 @@ function turnOff() {
         allElements[i].classList.remove("TransToWhite987");
     }
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {

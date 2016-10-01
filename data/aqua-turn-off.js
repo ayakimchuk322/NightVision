@@ -14,11 +14,11 @@ function turnOff() {
         allElements[i].classList.remove("ToBlack987");
     }
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {
-    console.log("[NightVision - high contrast mode OFF]");
+    console.log("[NightVision - high contrast #2 mode OFF]");
 }
 
 turnOff();

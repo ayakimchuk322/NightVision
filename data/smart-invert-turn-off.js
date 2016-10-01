@@ -28,7 +28,7 @@ function turnOff() {
         videos[i].style.filter = "invert(0%)";
     }
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {

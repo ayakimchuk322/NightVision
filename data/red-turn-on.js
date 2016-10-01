@@ -32,11 +32,11 @@ function turnOn() {
     highSheet.insertRule("* {outline: red; !important}", 0);
     highSheet.insertRule("* {box-shadow: red; !important}", 0);
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {
-    console.log("[NightVision - red alert mode ON]");
+    console.log("[NightVision - high contrast #3 mode ON]");
 }
 
 turnOn();

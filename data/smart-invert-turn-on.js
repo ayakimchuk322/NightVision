@@ -41,7 +41,7 @@ function turnOn() {
         videos[i].style.filter = "invert(100%)";
     }
 
-    consoleOut();
+    // consoleOut();
 }
 
 function consoleOut() {
