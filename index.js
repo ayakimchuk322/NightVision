@@ -120,3 +120,10 @@ function applyToNewTab() {
         });
     }
 }
+
+/*Revert pages when add-on disabled or uninstalled*/
+exports.onUnload = function (reason) {
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].reload();
+    }
+}
