@@ -1,9 +1,9 @@
 /*Firefox SDK imports*/
-var buttons = require('sdk/ui/button/action');
+var buttons = require("sdk/ui/button/action");
 var panels = require("sdk/panel");
 var self = require("sdk/self");
 var tabs = require("sdk/tabs");
-var toggle = require('sdk/ui/button/toggle');
+var toggle = require("sdk/ui/button/toggle");
 
 var isEnabled = false;
 var currentMode;
@@ -57,14 +57,14 @@ function handleChange(state) {
         });
 
         /*Enable tooltips (title attribute) inside panel*/
-        require('sdk/view/core').getActiveView(panel)
-            .setAttribute('tooltip', 'aHTMLTooltip');
+        require("sdk/view/core").getActiveView(panel)
+            .setAttribute("tooltip", "aHTMLTooltip");
     }
 }
 
 /*Panel hide*/
 function handleHide() {
-    button.state('window', {checked: false});
+    button.state("window", {checked: false});
 }
 
 /*Get user click from panel*/
