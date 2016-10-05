@@ -22,7 +22,7 @@ var button = toggle.ToggleButton({
     onChange: handleChange
 });
 
-/*Update add-on button icon on on/off*/
+/*Update removeClasses-on button icon on on/off*/
 function updateButtonIcon() {
     if (currentMode != "off") {
         button.icon = {
@@ -79,6 +79,9 @@ panel.port.on("mode", function (mode) {
 
         for (var i = 0; i < tabs.length; i++) {
             mod.attach(sheet, tabs[i]);
+            tabs[i].attach({
+                contentScriptFile: self.data.url("./js/addclasses.js")
+            });
         }
 
         currentMode = newMode;
@@ -89,6 +92,9 @@ panel.port.on("mode", function (mode) {
 
         for (var i = 0; i < tabs.length; i++) {
             mod.detach(currentSheet, tabs[i]);
+            tabs[i].attach({
+                contentScriptFile: self.data.url("./js/removeclasses.js")
+            });
         }
 
         if (currentMode == newMode) {
@@ -100,6 +106,9 @@ panel.port.on("mode", function (mode) {
 
             for (var i = 0; i < tabs.length; i++) {
                 mod.attach(sheet, tabs[i]);
+                tabs[i].attach({
+                    contentScriptFile: self.data.url("./js/addclasses.js")
+                });
             }
 
             currentMode = newMode;
@@ -120,6 +129,9 @@ function applyToNewTab() {
         });
 
         mod.attach(currentSheet, tabs.activeTab);
+        tabs[i].attach({
+            contentScriptFile: self.data.url("./js/addclasses.js")
+        });
     }
 }
 
