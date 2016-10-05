@@ -14,9 +14,9 @@ var button = toggle.ToggleButton({
     id: "nightvision-menu-button",
     label: "Open NightVision menu",
     icon: {
-        "16": "./icon-off-16.png",
-        "32": "./icon-off-32.png",
-        "64": "./icon-off-64.png"
+        "16": "./icons/icon-off-16.png",
+        "32": "./icons/icon-off-32.png",
+        "64": "./icons/icon-off-64.png"
     },
     onChange: handleChange
 });
@@ -25,15 +25,15 @@ var button = toggle.ToggleButton({
 function updateButtonIcon() {
     if (isEnabled) {
         button.icon = {
-            "16": "./icon-on-16.png",
-            "32": "./icon-on-32.png",
-            "64": "./icon-on-64.png"
+            "16": "./icons/icon-on-16.png",
+            "32": "./icons/icon-on-32.png",
+            "64": "./icons/icon-on-64.png"
         }
     } else {
         button.icon = {
-            "16": "./icon-off-16.png",
-            "32": "./icon-off-32.png",
-            "64": "./icon-off-64.png"
+            "16": "./icons/icon-off-16.png",
+            "32": "./icons/icon-off-32.png",
+            "64": "./icons/icon-off-64.png"
         }
     }
 }
