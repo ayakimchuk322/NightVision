@@ -1,0 +1,16 @@
+body {
+    filter: invert(100%) brightness(75%);
+}
+
+img {
+    filter: invert(100%);
+}
+
+video {
+    filter: invert(100%);
+}
+
+.Trans987 {
+    background-color: white !important;
+    color: black !important;
+}

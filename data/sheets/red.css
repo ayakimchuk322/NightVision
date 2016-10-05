@@ -1,0 +1,11 @@
+body {
+    filter: brightness(75%);
+}
+
+.NonTrans987 {
+    background-color: black !important;
+    color: red !important;
+    border-color: red !important;
+    outline: red !important;
+    box-shadow: red !important
+}

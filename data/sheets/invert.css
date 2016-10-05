@@ -1,0 +1,8 @@
+body {
+    filter: invert(100%) brightness(75%);
+}
+
+.Trans987 {
+    background-color: white !important;
+    color: black !important;
+}
