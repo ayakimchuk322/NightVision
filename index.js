@@ -1,12 +1,13 @@
 /*Firefox SDK imports*/
 var buttons = require("sdk/ui/button/action");
+var mod = require('sdk/content/mod');
 var panels = require("sdk/panel");
 var self = require("sdk/self");
+var style = require('sdk/stylesheet/style');
 var tabs = require("sdk/tabs");
 var toggle = require("sdk/ui/button/toggle");
 
-var isEnabled = false;
-var currentMode;
+var currentMode = "off";
 var newMode;
 
 /*Add-on menu button*/
@@ -23,7 +24,7 @@ var button = toggle.ToggleButton({
 
 /*Update add-on button icon on on/off*/
 function updateButtonIcon() {
-    if (isEnabled) {
+    if (currentMode != "off") {
         button.icon = {
             "16": "./icons/icon-on-16.png",
             "32": "./icons/icon-on-32.png",
@@ -67,57 +68,58 @@ function handleHide() {
     button.state("window", {checked: false});
 }
 
-/*Get user click from panel*/
+/*Get user click from panel and apply night mode to all opened tabs*/
 panel.port.on("mode", function (mode) {
-    /*Apply method script to all opened tabs*/
-
     newMode = mode;
 
-    if (!isEnabled) {
+    if (currentMode == "off") {
+        var sheet = style.Style({
+            uri: './sheets/' + newMode + ".css"
+        });
+
         for (var i = 0; i < tabs.length; i++) {
-            tabs[i].attach({
-                contentScriptFile: self.data.url(newMode)
-            });
+            mod.attach(sheet, tabs[i]);
         }
 
         currentMode = newMode;
-        isEnabled = true;
     } else {
-        if (currentMode != undefined) {
-            var currentModeOff = currentMode.replace("-on", "-off");
+        var currentSheet = style.Style({
+            uri: './sheets/' + currentMode + ".css"
+        });
 
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].attach({
-                    contentScriptFile: self.data.url(currentModeOff)
-                });
-            }
+        for (var i = 0; i < tabs.length; i++) {
+            mod.detach(currentSheet, tabs[i]);
         }
 
-        if (newMode.indexOf("-on") != -1) {
+        if (currentMode == newMode) {
+            currentMode = "off";
+        } else {
+            var sheet = style.Style({
+                uri: './sheets/' + newMode + ".css"
+            });
+
             for (var i = 0; i < tabs.length; i++) {
-                tabs[i].attach({
-                    contentScriptFile: self.data.url(newMode)
-                });
+                mod.attach(sheet, tabs[i]);
             }
 
             currentMode = newMode;
-        } else {
-            isEnabled = false;
         }
     }
 
     updateButtonIcon();
 });
 
-/*Apply method script to newly opened tab*/
+/*Apply night mode to newly opened tab*/
 tabs.on("ready", applyToNewTab);
 tabs.on("activate", applyToNewTab);
 
 function applyToNewTab() {
-    if (newMode != "off") {
-        tabs.activeTab.attach({
-            contentScriptFile: self.data.url(newMode)
+    if (currentMode != "off") {
+        var currentSheet = style.Style({
+            uri: './sheets/' + currentMode + ".css"
         });
+
+        mod.attach(currentSheet, tabs.activeTab);
     }
 }
 
