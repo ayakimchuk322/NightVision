@@ -68,7 +68,7 @@ function handleHide() {
 }
 
 /*Get user click from panel*/
-panel.port.on("invertM", function (mode) {
+panel.port.on("mode", function (mode) {
     /*Apply method script to all opened tabs*/
 
     newMode = mode;
@@ -84,7 +84,7 @@ panel.port.on("invertM", function (mode) {
         isEnabled = true;
     } else {
         if (currentMode != undefined) {
-            var currentModeOff = currentMode.replace("turn-on", "turn-off");
+            var currentModeOff = currentMode.replace("-on", "-off");
 
             for (var i = 0; i < tabs.length; i++) {
                 tabs[i].attach({
@@ -93,7 +93,7 @@ panel.port.on("invertM", function (mode) {
             }
         }
 
-        if (newMode.indexOf("turn-on") != -1) {
+        if (newMode.indexOf("-on") != -1) {
             for (var i = 0; i < tabs.length; i++) {
                 tabs[i].attach({
                     contentScriptFile: self.data.url(newMode)

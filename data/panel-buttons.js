@@ -11,23 +11,23 @@ document.getElementById("red").addEventListener("click", red);
 
 function invert() {
     if (currentMode != "invert") {
-        self.port.emit("invertM", "invert-turn-on.js");
+        self.port.emit("mode", "invert-on.js");
 
         currentMode = "invert";
     } else {
-        self.port.emit("invertM", "invert-turn-off.js");
+        self.port.emit("mode", "invert-off.js");
 
         currentMode = "off";
     }
 }
 
 function smart() {
-    if (currentMode != "smartinvert") {
-        self.port.emit("invertM", "smart-invert-turn-on.js");
+    if (currentMode != "smart") {
+        self.port.emit("mode", "smart-on.js");
 
-        currentMode = "smartinvert";
+        currentMode = "smart";
     } else {
-        self.port.emit("invertM", "smart-invert-turn-off.js");
+        self.port.emit("mode", "smart-off.js");
 
         currentMode = "off";
     }
@@ -35,11 +35,11 @@ function smart() {
 
 function green() {
     if (currentMode != "green") {
-        self.port.emit("invertM", "green-turn-on.js");
+        self.port.emit("mode", "green-on.js");
 
         currentMode = "green";
     } else {
-        self.port.emit("invertM", "green-turn-off.js");
+        self.port.emit("mode", "green-off.js");
 
         currentMode = "off";
     }
@@ -47,11 +47,11 @@ function green() {
 
 function aqua() {
     if (currentMode != "aqua") {
-        self.port.emit("invertM", "aqua-turn-on.js");
+        self.port.emit("mode", "aqua-on.js");
 
         currentMode = "aqua";
     } else {
-        self.port.emit("invertM", "aqua-turn-off.js");
+        self.port.emit("mode", "aqua-off.js");
 
         currentMode = "off";
     }
@@ -59,11 +59,11 @@ function aqua() {
 
 function red() {
     if (currentMode != "red") {
-        self.port.emit("invertM", "red-turn-on.js");
+        self.port.emit("mode", "red-on.js");
 
         currentMode = "red";
     } else {
-        self.port.emit("invertM", "red-turn-off.js");
+        self.port.emit("mode", "red-off.js");
 
         currentMode = "off";
     }
