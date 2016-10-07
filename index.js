@@ -74,22 +74,36 @@ panel.port.on("mode", function (mode) {
 
     if (currentMode == "off") {
         var sheet = style.Style({
-            uri: './sheets/' + newMode + ".css"
+            uri: "./sheets/" + newMode + ".css"
         });
 
+        // First, process active tab
+        tabs.activeTab.attach({
+            contentScriptFile: self.data.url("./js/addclasses.js")
+        });
+        mod.attach(sheet, tabs.activeTab);
+
+        // Process all tabs
         for (var i = 0; i < tabs.length; i++) {
-            mod.attach(sheet, tabs[i]);
             tabs[i].attach({
                 contentScriptFile: self.data.url("./js/addclasses.js")
             });
+            mod.attach(sheet, tabs[i]);
         }
 
         currentMode = newMode;
     } else {
         var currentSheet = style.Style({
-            uri: './sheets/' + currentMode + ".css"
+            uri: "./sheets/" + currentMode + ".css"
         });
 
+        // First, process active tab
+        mod.detach(currentSheet, tabs.activeTab);
+        tabs.activeTab.attach({
+            contentScriptFile: self.data.url("./js/removeclasses.js")
+        });
+
+        // Process all tabs
         for (var i = 0; i < tabs.length; i++) {
             mod.detach(currentSheet, tabs[i]);
             tabs[i].attach({
@@ -101,14 +115,21 @@ panel.port.on("mode", function (mode) {
             currentMode = "off";
         } else {
             var sheet = style.Style({
-                uri: './sheets/' + newMode + ".css"
+                uri: "./sheets/" + newMode + ".css"
             });
 
+            // First, process active tab
+            tabs.activeTab.attach({
+                contentScriptFile: self.data.url("./js/addclasses.js")
+            });
+            mod.attach(sheet, tabs.activeTab);
+
+            // Process all tabs
             for (var i = 0; i < tabs.length; i++) {
-                mod.attach(sheet, tabs[i]);
                 tabs[i].attach({
                     contentScriptFile: self.data.url("./js/addclasses.js")
                 });
+                mod.attach(sheet, tabs[i]);
             }
 
             currentMode = newMode;
@@ -125,19 +146,29 @@ tabs.on("activate", applyToNewTab);
 function applyToNewTab() {
     if (currentMode != "off") {
         var currentSheet = style.Style({
-            uri: './sheets/' + currentMode + ".css"
+            uri: "./sheets/" + currentMode + ".css"
         });
 
-        mod.attach(currentSheet, tabs.activeTab);
-        tabs[i].attach({
+        tabs.activeTab.attach({
             contentScriptFile: self.data.url("./js/addclasses.js")
         });
+        mod.attach(currentSheet, tabs.activeTab);
     }
 }
 
 /*Revert pages when add-on disabled or uninstalled*/
 exports.onUnload = function (reason) {
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].reload();
+    // If mode is off, do nothing
+    if (currentMode != "off") {
+        var currentSheet = style.Style({
+            uri: "./sheets/" + currentMode + ".css"
+        });
+
+        for (var i = 0; i < tabs.length; i++) {
+            mod.detach(currentSheet, tabs[i]);
+            tabs[i].attach({
+                contentScriptFile: self.data.url("./js/removeclasses.js")
+            });
+        }
     }
 }
